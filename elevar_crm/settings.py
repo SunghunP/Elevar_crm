@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-LOGIN_REDIRECT_URL = '/accounts/'
+LOGIN_REDIRECT_URL = '/leads/'
 
 LOGOUT_REDIRECT_URL = '/'
 

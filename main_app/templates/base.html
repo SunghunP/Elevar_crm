@@ -31,8 +31,14 @@
     </nav>
   </header>
   <main class="container">
-    {% block content %}
-    {% endblock %}
+    <div class="menu">
+        {% block menu %}
+        {% endblock %}
+    </div>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
   </main>
   <footer class="page-footer">
     <div class="footer-copyright">
