@@ -11,33 +11,33 @@ urlpatterns = [
     path('about/', views.about, name='about'),
 
     ###############
-    ## account/Accounts
+    ## account
     ###############
     # # index route for account
-    path('account/', views.account_index, name="account"),
+    path('account/', views.account_index, name="account_index"),
     # # detail route for account
     path('account/<int:account_id>/', views.account_detail, name="account_detail"),
-    # # create route for account
-    # path('account/create/', views.AccountCreate.as_view(), name="account_create"),
-    # # update route for account
-    # path('account/<int:pk>/update', views.AccountUpdate.as_view(), name="account_update"),
-    # # delete route for card
-    # path('account/<int:pk>/delete/', views.AccountDelete.as_view(), name="account_delete"),
+    # create route for account
+    path('account/create/', views.AccountCreate.as_view(), name="account_create"),
+    # update route for account
+    path('account/<int:pk>/update', views.AccountUpdate.as_view(), name="account_update"),
+    # delete route for card
+    path('account/<int:pk>/delete/', views.AccountDelete.as_view(), name="account_delete"),
 
 
     # ###############
     # ## Contacts
     # ###############
     # # index route for contacts
-    path('contact/', views.ContactList.as_view(), name="contact"),
+    path('contact/', views.ContactList.as_view(), name="contact_index"),
     # # detail route for contacts
     path('contact/<int:pk>/', views.ContactDetail.as_view(), name="contact_detail"),
-    # # create route for contacts
-    # path('contact/create/', views.ContactCreate.as_view(), name="contact_create"),
-    # # update route for contacts
-    # path('contact/<int:pk>/update', views.ContactUpdate.as_view(), name="contact_update"),
-    # # delete route for card
-    # path('contact/<int:pk>/delete/', views.ContactDelete.as_view(), name="contact_delete"),
+    # create route for contacts
+    path('contact/create/', views.ContactCreate.as_view(), name="contact_create"),
+    # update route for contacts
+    path('contact/<int:pk>/update', views.ContactUpdate.as_view(), name="contact_update"),
+    # delete route for card
+    path('contact/<int:pk>/delete/', views.ContactDelete.as_view(), name="contact_delete"),
 
     # ###############
     # ## Products
@@ -46,12 +46,12 @@ urlpatterns = [
     path('product/', views.ProductList.as_view(), name="product"),
     # detail route for contacts
     path('product/<int:pk>/', views.ProductDetail.as_view(), name="product_detail"),
-    # # create route for contacts
-    # path('product/create/', views.ProductCreate.as_view(), name="product_create"),
-    # # update route for contacts
-    # path('product/<int:pk>/update', views.ProductUpdate.as_view(), name="product_update"),
-    # # delete route for card
-    # path('product/<int:pk>/delete/', views.ProductDelete.as_view(), name="product_delete"),
+    # create route for contacts
+    path('product/create/', views.ProductCreate.as_view(), name="product_create"),
+    # update route for contacts
+    path('product/<int:pk>/update', views.ProductUpdate.as_view(), name="product_update"),
+    # delete route for card
+    path('product/<int:pk>/delete/', views.ProductDelete.as_view(), name="product_delete"),
     # # add a photo to a product
     # path('product/<int:product_id>/add_photo/', views.add_photo, name="add_photo"),
 
