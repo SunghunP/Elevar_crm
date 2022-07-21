@@ -1,0 +1,51 @@
+html,body {
+	height: 100vh;
+}
+
+main {
+	height: 100%;
+}
+
+main.row {
+	margin: 0px;
+	padding: 0px;
+}
+
+.menu-item {
+	text-decoration: none;
+	color: black;
+	font-size: 25px;
+	max-width: 270px;
+	height: 50px;
+	border: solid black 1px;
+	padding: 10px;
+}
+
+.menu-card {
+	width: 100%;
+	margin: 20px
+}
+
+.menu-card, .menu-link, .menu-item {
+	border-radius: 15px;
+}
+
+.menu-left-align {
+	width: 100%;
+}
+
+div.menu.col {
+	width: 100%;
+	border-right: 1px solid black;
+	height: 100%;
+}
+
+i.fa-solid {
+	margin: 5px;
+	margin-right: 10px;
+}
+
+.row .col.s3 {
+	margin: 0px;
+	padding: 0px auto;
+}
