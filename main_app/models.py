@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 
@@ -27,7 +28,7 @@ class Contact(models.Model):
 	first_name = models.CharField(max_length=100)
 	last_name = models.CharField(max_length=100)
 	title = models.CharField(max_length=100)
-	phone = models.IntegerField()
+	phone = PhoneNumberField(unique = True, null = False, blank = False)
 	email = models.CharField(max_length=100)
 	account = models.ForeignKey(Account, on_delete=models.CASCADE)
 
@@ -35,7 +36,7 @@ class Contact(models.Model):
 		return f" This is {self.first_name}, {self.last_name}"
 
 	def get_absolute_url(self):
-		return reverse("contact_detail", kwargs={"contact_id": self.id})
+		return reverse("contact_detail", kwargs={"pk": self.id})
 
 class Product(models.Model):
 	name = models.CharField(max_length=100)
