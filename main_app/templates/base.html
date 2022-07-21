@@ -10,10 +10,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://kit.fontawesome.com/866d41faab.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="navbar-fixed">
-    <nav>
+    <nav class="teal">
       <div class="nav-wrapper">
         <ul>
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Elevar-CRM</a></li>
@@ -30,19 +31,33 @@
       </div>
     </nav>
   </header>
-  <main class="container">
-    <div class="menu">
-        {% block menu %}
-        {% endblock %}
+  <main class="row">
+    <div class="menu col s3 valign-wrapper center-align">
+      {% if user.is_authenticated %}
+        <ul class="menu left-align">
+          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-briefcase"></i><span >My Work</span></li></a></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-rocket"></i><span>Dashboard</span></li></a></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-clipboard"></i><span>Activities</span></li></a></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-users"></i><span>Customers</span></li></a></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-address-card"></i><span>Contacts</span></li></a></div>
+          
+          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-address-book"></i><span>Accounts</span></li></a></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-chart-line"></i><span>Sales</span></li></a></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-star"></i><span>Leads</span></li></a></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-lightbulb"></i><span>Opportunities</span></li></a></div>
+        </ul>
+      {% else %}
+        <nomenu>
+      {% endif %}
     </div>
-    <div class="content">
-        {% block content %}
-        {% endblock %}
+    <div class="content col s9">
+      {% block content %}
+      {% endblock %}
     </div>
   </main>
-  <footer class="page-footer">
+  <footer class="page-footer teal">
     <div class="footer-copyright">
-        <div class="container right">All Rights Reserved,&copy; 2022 Elevar-CRM &nbsp;</div>
+      <div class="container right">All Rights Reserved,&copy; 2022 Elevar-CRM &nbsp;</div>
     </div>
 </footer>
 </body>
