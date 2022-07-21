@@ -9,10 +9,10 @@
       <div class="card-content">
         <span class="card-title">{{ product.name }}</span>
       </div>
-      <div class="card-action">
-        <a href="{% url 'products_update' product.id %}">Edit</a>
-        <a href="{% url 'products_delete' product.id %}">Delete</a>
-      </div>
+      {% comment %} <div class="card-action">
+        <a href="{% url 'product_update' product.id %}">Edit</a>
+        <a href="{% url 'product_delete' product.id %}">Delete</a>
+      </div> {% endcomment %}
     </div>
   </div>
 </div>
