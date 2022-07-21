@@ -5,21 +5,21 @@ urlpatterns = [
     # home route
     path('', views.home, name='home'),
     # signup route
-    path('leads/signup/', views.signup, name='signup'),
+    path('account/signup/', views.signup, name='signup'),
 
     ###############
-    ## Leads/Accounts
+    ## account/Accounts
     ###############
-    # # index route for leads
-    # path('leads/', views.leads_index, name="leads"),
-    # # detail route for leads
-    # path('leads/<int:lead_id>/', views.lead_detail, name="lead_detail"),
-    # # create route for leads
-    # path('leads/create/', views.LeadCreate.as_view(), name="lead_create"),
-    # # update route for leads
-    # path('leads/<int:pk>/update', views.LeadUpdate.as_view(), name="lead_update"),
+    # # index route for account
+    # path('account/', views.account_index, name="account"),
+    # # detail route for account
+    # path('account/<int:account_id>/', views.account_detail, name="account_detail"),
+    # # create route for account
+    # path('account/create/', views.AccountCreate.as_view(), name="account_create"),
+    # # update route for account
+    # path('account/<int:pk>/update', views.AccountUpdate.as_view(), name="account_update"),
     # # delete route for card
-    # path('leads/<int:pk>/delete/', views.LeadDelete.as_view(), name="lead_delete"),
+    # path('account/<int:pk>/delete/', views.AccountDelete.as_view(), name="account_delete"),
 
 
     # ###############
@@ -55,15 +55,15 @@ urlpatterns = [
     #################
     ## Relationships
     #################
-    # # 1:M leads to transactions
-    # path('leads/<int:lead_id>/add_trans/', views.add_trans, name="add_trans"),
-    # # M:M associating a leads to products
-    # path('leads/<int:lead_id>/assoc_product/<int:product_id>/', views.assoc_product, name="assoc_product"),
-    # # route for removing a product from a lead
-    # path('leads/<int:lead_id>/remove_product/<int:product_id>/', views.remove_product, name="remove_product"),
-    # # M:M associating a contacts to leads
-    # path('leads/<int:lead_id>/assoc_contact/<int:contact>/', views.assoc_contact, name="assoc_contact"),
-    # # route for removing a contact from a lead
-    # path('leads/<int:lead_id>/remove_contact/<int:contact>/', views.remove_contact, name="remove_contact"),
+    # # 1:M account to transactions
+    # path('account/<int:account_id>/add_trans/', views.add_trans, name="add_trans"),
+    # # M:M associating a account to products
+    # path('account/<int:account_id>/assoc_product/<int:product_id>/', views.assoc_product, name="assoc_product"),
+    # # route for removing a product from a account
+    # path('account/<int:account_id>/remove_product/<int:product_id>/', views.remove_product, name="remove_product"),
+    # # M:M associating a contacts to account
+    # path('account/<int:account_id>/assoc_contact/<int:contact>/', views.assoc_contact, name="assoc_contact"),
+    # # route for removing a contact from a account
+    # path('account/<int:account_id>/remove_contact/<int:contact>/', views.remove_contact, name="remove_contact"),
 
 ]
