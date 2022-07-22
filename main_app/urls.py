@@ -42,18 +42,18 @@ urlpatterns = [
     # ###############
     # ## Products
     # ###############
-    # # index route for contacts
+    # # index route for products
     path('product/', views.ProductList.as_view(), name="product"),
-    # detail route for contacts
+    # detail route for products
     path('product/<int:pk>/', views.ProductDetail.as_view(), name="product_detail"),
-    # create route for contacts
+    # create route for products
     path('product/create/', views.ProductCreate.as_view(), name="product_create"),
-    # update route for contacts
-    path('product/<int:pk>/update', views.ProductUpdate.as_view(), name="product_update"),
+    # update route for products
+    path('product/<int:pk>/update/', views.ProductUpdate.as_view(), name="product_update"),
     # delete route for card
     path('product/<int:pk>/delete/', views.ProductDelete.as_view(), name="product_delete"),
-    # # add a photo to a product
-    # path('product/<int:product_id>/add_photo/', views.add_photo, name="add_photo"),
+    # add a photo to a product
+    path('product/<int:product_id>/add_photo/', views.add_photo, name="add_photo"),
 
     #################
     ## Relationships
