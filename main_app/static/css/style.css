@@ -11,6 +11,15 @@ main.row {
 	padding: 0px;
 }
 
+.flex {
+	display: flex;
+	justify-content: center;
+}
+
+.flex.flex-col {
+	flex-direction: column;
+}
+
 .menu-item {
 	text-decoration: none;
 	color: black;
@@ -37,6 +46,10 @@ div.menu.col {
 	width: 100%;
 	border-right: 1px solid black;
 	height: 100%;
+}
+
+div.content {
+	height: 80%;
 }
 
 i.fa-solid {
