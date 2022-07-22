@@ -1,8 +1,77 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-<h1> Account Details </h1>
+<h1>Account Details</h1>
+<div class="row 4">
+  <div class="col s5">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Contacts</span>
+        {% for contact in employees %}
+        <a href="">
+          <div class="card">
+            <div class="card-content">
+              <a href="/contact/">
+                <span class="card-title"
+                  >{{ contact.first_name }} {{ contact.last_name }}</span
+                >
+              </a>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="col s5">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Transactions</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-
+<div class="row 4">
+  <div class="col s5">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Company Info</span>
+        <table>
+          <tbody>
+            <tr>
+              <td>Name</td><td>{{ account.company_name }}</td>
+            </tr>
+            <tr>
+              <td>Industry</td><td>{{ account.industry }}</td>
+            </tr>
+            <tr>
+              <td>City</td><td>{{ account.city }}</td>
+            </tr>
+            <tr>
+              <td>State/Province</td><td>{{ account.state }}</td>
+            </tr>
+            <tr>
+              <td>ZIP/Postal</td><td>{{ account.zip }}</td>
+            </tr>
+            <tr>
+              <td>Country/Region</td><td>{{ account.country }}</td>
+            </tr>
+            <tr>
+              <td>Description</td><td><p>{{ account.description }}</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col s5">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Product Info</span>
+        {% comment %} <h4>{{product.name}}</h4> {% endcomment %}
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

@@ -46,16 +46,20 @@ def account_index(request):
 
 
 @login_required
-def account_detail(request, account_id):
+def account_detail(request, account_id): 
     account = Account.objects.get(id=account_id, user=request.user)
+    #todo! rendering product in details page
+    # product = Product.objects.get(id=product_id, user=request.user)
     if not account.user == request.user:
         return redirect('home')
-    ## todo! populate all employees belonging to this account
-    # employees = Contact.objects.filter(company_id = account_id)
+    employees = Contact.objects.filter(account_id = account_id)
     return render(request, 'account/detail.html', {
         'account': account,
-        # 'employees': employees
-        })
+        'employees': employees,
+        # 'product' : product,
+    })
+  
+
 
 
 class AccountCreate(LoginRequiredMixin, CreateView):
