@@ -11,14 +11,22 @@ main.row {
 	padding: 0px;
 }
 
+.flex {
+	display: flex;
+	justify-content: center;
+}
+
+.flex.flex-col {
+	flex-direction: column;
+}
+
 .menu-item {
 	text-decoration: none;
 	color: black;
 	font-size: 25px;
-	max-width: 270px;
-	height: 50px;
+	height: 60px;
 	border: solid black 1px;
-	padding: 10px;
+	padding: 15px;
 }
 
 .menu-card {
@@ -40,6 +48,10 @@ div.menu.col {
 	height: 100%;
 }
 
+div.content {
+	height: 80%;
+}
+
 i.fa-solid {
 	margin: 5px;
 	margin-right: 10px;
@@ -48,4 +60,18 @@ i.fa-solid {
 .row .col.s3 {
 	margin: 0px;
 	padding: 0px auto;
+}
+
+.contact-details-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.contact-details-title h1 {
+	margin: 20px 0px;
+}
+
+.medium.material-icons {
+	margin: 5px 10px;
+
 }

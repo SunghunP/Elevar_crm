@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://kit.fontawesome.com/866d41faab.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <header class="navbar-fixed">
@@ -38,13 +39,13 @@
     {% if user.is_authenticated %}
       <div class="menu col s3 valign-wrapper center-align">
         <ul class="menu left-align">
-          <div class="menu-card hoverable"><li class="menu-item"><span >My Work</span></li></div>
-          <div class="menu-card hoverable"><a class="menu-link" href=""><li class="menu-item"><i class="fa-solid fa-rocket"></i><span>Dashboard</span></li></a></div>
+          <div class="menu-card-title"><li class="menu-title"><h4>My Work</h4></li></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="{% url 'account_index' %}"><li class="menu-item"><i class="fa-solid fa-rocket"></i><span>Dashboard</span></li></a></div>
           <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-clipboard"></i><span>Activities</span></li></a></div>
-          <div class="menu-card hoverable"><li class="menu-item"><span>Customers</span></li></div>
+          <div class="menu-card-title"><li class="menu-title"><h4>Customers</h4></li></div>
           <div class="menu-card hoverable"><a class="menu-link" href="{% url 'contact_index' %}"><li class="menu-item"><i class="fa-solid fa-address-card"></i><span>Contacts</span></li></a></div>
           <div class="menu-card hoverable"><a class="menu-link" href="{% url 'account_index' %}"><li class="menu-item"><i class="fa-solid fa-address-book"></i><span>Accounts</span></li></a></div>
-          <div class="menu-card hoverable"><li class="menu-item"><span>Sales</span></li></div>
+          <div class="menu-card-title"><li class="menu-title"><h4>Sales</h4></li></div>
           <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-star"></i><span>Leads</span></li></a></div>
           <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-lightbulb"></i><span>Opportunities</span></li></a></div>
         </ul>
@@ -52,7 +53,7 @@
       {% else %}
 
       {% endif %}
-    <div class="content col s9">
+    <div class="content col s9 flex flex-col">
       {% block content %}
       {% endblock %}
     </div>

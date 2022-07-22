@@ -64,8 +64,7 @@ def account_detail(request, account_id):
 
 class AccountCreate(LoginRequiredMixin, CreateView):
     model = Account
-    fields = ['company_name', 'industry', 'state',
-              'city', 'country', 'zip', 'description']
+    fields = ['company_name', 'industry', 'state', 'city', 'country', 'zip', 'description']
 
     def form_valid(self, form):
         ## this is assigning the logged in user 
