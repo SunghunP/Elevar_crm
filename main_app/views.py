@@ -10,8 +10,8 @@ import uuid
 import boto3
 from .models import Account, Contact, Photo, Product
 
-S3_BASE_URL = ''
-BUCKET = ''
+S3_BASE_URL = 'https://s3.us-west-2.amazonaws.com/'
+BUCKET = 'elevar-crm-project'
 
 # Create your views here.
 def home(request):
@@ -46,16 +46,20 @@ def account_index(request):
 
 
 @login_required
-def account_detail(request, account_id):
+def account_detail(request, account_id): 
     account = Account.objects.get(id=account_id, user=request.user)
+    #todo! rendering product in details page
+    # product = Product.objects.get(id=product_id, user=request.user)
     if not account.user == request.user:
         return redirect('home')
-    ## todo! populate all employees belonging to this account
-    # employees = Contact.objects.filter(company_id = account_id)
+    employees = Contact.objects.filter(account_id = account_id)
     return render(request, 'account/detail.html', {
         'account': account,
-        # 'employees': employees
-        })
+        'employees': employees,
+        # 'product' : product,
+    })
+  
+
 
 
 class AccountCreate(LoginRequiredMixin, CreateView):
@@ -153,3 +157,29 @@ class ProductUpdate(LoginRequiredMixin, UpdateView):
 class ProductDelete(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = '/product/'
+
+@login_required
+def add_photo(request, product_id):
+    # todo product authorization
+    # product = Product.objects.get(id=product_id, user=request.user)
+    # if not product.user == request.user:
+    #     return redirect('home')
+    # return product
+    # photo-file will be the 'name' attribute on the <input type="file">
+    photo_file = request.FILES.get('photo-file', None)
+    print(f"this is photo_file -->> {photo_file}")
+    if photo_file:
+        s3 = boto3.client('s3')
+        # need a unique 'key' for s3 / needs file extension
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.')]
+        print(f"this is key -->> {key}")
+        # error handling
+        try: 
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            photo = Photo(url=url, product_id=product_id)
+            print(f"this is photo in try block -->> {photo}")
+            photo.save()
+        except:
+            print('An error occured')
+    return redirect("product_detail", pk=product_id)

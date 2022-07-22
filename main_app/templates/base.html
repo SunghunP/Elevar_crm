@@ -23,7 +23,9 @@
         <ul class="right">
           {% comment %} important to include the leading / in th HTML {% endcomment %}
             <li><a href="{% url 'about' %}">About</a></li>      
-          {% if user.is_authenticated %}  
+            {% if user.is_authenticated %}  
+            <li><a href="{% url 'product' %}">View Your Products</a></li>
+            <li><a href="{% url 'product_create' %}">Create Product</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
@@ -49,7 +51,7 @@
         </ul>
       </div>
       {% else %}
-        <nomenu>
+
       {% endif %}
     <div class="content col s9 flex flex-col">
       {% block content %}

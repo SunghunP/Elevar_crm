@@ -4,9 +4,20 @@ from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
+class Product(models.Model):
+	name = models.CharField(max_length=100)
+	price = models.IntegerField()
+	description = models.TextField(max_length=300)
+
+	def __str__(self):
+		return f'Product {self.name} with a price of {self.price}'
+	
+	def get_absolute_url(self):
+		return reverse('product_detail', kwargs = {'pk': self.id})
 
 class Account(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	products = models.ManyToManyField(Product)
 	company_name = models.CharField(max_length=100)
 	industry = models.CharField(max_length=100)
 	state = models.CharField(max_length=100)
@@ -14,8 +25,6 @@ class Account(models.Model):
 	country = models.CharField(max_length=100)
 	zip = models.IntegerField()
 	description = models.TextField(max_length=250)
-
-
 
 	def __str__(self):
 		return f"company {self.company_name} located in {self.city}/{self.state}"
@@ -38,17 +47,6 @@ class Contact(models.Model):
 	def get_absolute_url(self):
 		return reverse("contact_detail", kwargs={"pk": self.id})
 
-class Product(models.Model):
-	name = models.CharField(max_length=100)
-	price = models.IntegerField()
-	description = models.TextField(max_length=300)
-	account = models.ForeignKey(Account, on_delete=models.CASCADE)
-
-	def __str__(self):
-		return f'Product {self.name} with a price of {self.price}'
-	
-	def get_absolute_url(self):
-		return reverse('product_detail', kwargs = {'product_id': self.id})
 
 class Photo(models.Model):
 	url = models.CharField(max_length=200)
