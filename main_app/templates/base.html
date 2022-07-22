@@ -37,7 +37,7 @@
       {% if user.is_authenticated %}
         <ul class="menu left-align">
           <div class="menu-card hoverable"><li class="menu-item"><span >My Work</span></li></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="{% url 'account_detail' %}"><li class="menu-item"><i class="fa-solid fa-rocket"></i><span>Dashboard</span></li></a></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="{% url 'account_index' %}"><li class="menu-item"><i class="fa-solid fa-rocket"></i><span>Dashboard</span></li></a></div>
           <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-clipboard"></i><span>Activities</span></li></a></div>
           <div class="menu-card hoverable"><li class="menu-item"><span>Customers</span></li></div>
           <div class="menu-card hoverable"><a class="menu-link" href="{% url 'contact_index' %}"><li class="menu-item"><i class="fa-solid fa-address-card"></i><span>Contacts</span></li></a></div>
