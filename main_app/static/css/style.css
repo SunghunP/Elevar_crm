@@ -109,6 +109,7 @@ i.fa-solid {
 	color: red;
 }
 
-[id=myChart]{
-	width: 250px;
+[id=myChart], .bruh {
+	max-height: 400px;
+	max-width: 500px;
 }
