@@ -20,7 +20,7 @@ urlpatterns = [
     # # detail route for account
     path('account/<int:account_id>/', views.account_detail, name="account_detail"),
     # create route for account
-    path('account/create/', views.AccountCreate.as_view(), name="account_create"),
+    path('account/create/', views.account_create, name="account_create"),
     # update route for account
     path('account/<int:pk>/update', views.AccountUpdate.as_view(), name="account_update"),
     # delete route for card
