@@ -34,7 +34,7 @@ class Account(models.Model):
 		return f"company {self.company_name} located in {self.city}/{self.state}"
 
 	def get_absolute_url(self):
-		return reverse('account', kwargs={'account_id': self.id}) 
+		return reverse('account_detail', kwargs={'account_id': self.id}) 
 
 
 class Contact(models.Model):

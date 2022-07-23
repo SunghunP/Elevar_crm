@@ -89,17 +89,16 @@ def account_index(request):
 def account_detail(request, account_id): 
     account = Account.objects.get(id=account_id, user=request.user)
     #todo! rendering product in details page
-    # product = Product.objects.get(id=product_id, user=request.user)
-
     if not account.user == request.user:
         return redirect('home')
     contact_form = ContactForm()
+    products = Product.objects.all()
     employees = Contact.objects.filter(account_id = account_id)
     return render(request, 'account/detail.html', {
         'account': account,
         'employees': employees,
         'contact_form': contact_form,
-        # 'product' : product,
+        'products' : products,
     })
   
 
@@ -232,3 +231,13 @@ def add_photo(request, product_id):
         except:
             print('An error occured')
     return redirect("product_detail", pk=product_id)
+
+@login_required
+def assoc_product(request, account_id, product_id):
+    Account.objects.get(id=account_id, user=request.user).products.add(product_id)
+    return redirect('account_detail', account_id=account_id)
+
+@login_required
+def remove_product(request, account_id, product_id):
+    Account.objects.get(id=account_id, user=request.user).products.remove(product_id)
+    return redirect('account_detail', account_id=account_id)

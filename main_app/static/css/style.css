@@ -115,6 +115,19 @@ i.fa-solid {
 	justify-content: space-between;
 }
 
+.account-detail-header .delete:hover {
+	color: rgb(253, 110, 110);
+}
+.account-detail-header .edit:hover {
+	color: orange;
+}
+.product-details{
+	display: flex;
+	justify-content: space-around;
+}
+.product-details p {
+	overflow: auto;
+}
 .account-detail-header a:hover {
 	color: red;
 }
