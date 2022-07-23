@@ -107,6 +107,21 @@ i.fa-solid {
 }
 
 .contact-detail-item {
+	font-size: large;
+}
+
+.account-detail-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.account-detail-header a:hover {
+	color: red;
+}
+
+[id=myChart], .bruh {
+	max-height: 500px;
+	max-width: 500px;
   font-size: large;
 }
 
@@ -114,7 +129,6 @@ i.fa-solid {
   border-radius: 50%;
   width: 70%;
   margin-top: 1.4em;
-
 }
 
 .center-image {

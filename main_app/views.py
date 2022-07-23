@@ -9,7 +9,35 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
 from .models import Account, Contact, Photo, Product
-from .forms import ContactForm, AccountForm
+from .forms import ContactForm
+from django.views.generic import TemplateView
+from chartjs.views.lines import BaseLineChartView
+from chartjs.views.columns import BaseColumnsHighChartsView
+from chartjs.views.pie import HighChartPieView
+
+class LineChartJSONView(BaseLineChartView):
+    def get_labels(self):
+        """Return 7 labels for the x-axis."""
+        return ["January", "February", "March", "April", "May", "June", "July"]
+
+    def get_providers(self):
+        """Return names of datasets."""
+        return ["Apple", "Google", "Symmetra"]
+
+    def get_data(self):
+        """Return 3 datasets to plot."""
+        return [[75, 44, 92, 11, 44, 95, 35],
+                [41, 92, 18, 3, 73, 87, 92],
+                [87, 21, 94, 3, 90, 13, 65]]
+
+class ColumnHighChartJSONView(BaseColumnsHighChartsView):
+    title = "Column Highchart test"
+    yUnit = "%"
+    providers = ["All"]
+    credits = {"enabled": False}
+
+line_chart = TemplateView.as_view(template_name='line_chart.html')
+line_chart_json = LineChartJSONView.as_view()
 
 S3_BASE_URL = 'https://s3.us-west-2.amazonaws.com/'
 BUCKET = 'elevar-crm-project'

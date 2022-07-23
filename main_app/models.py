@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
 import uuid
 
+
 # Create your models here.
 class Product(models.Model):
 	name = models.CharField(max_length=100)
