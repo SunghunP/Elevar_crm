@@ -100,3 +100,21 @@ i.fa-solid {
 .contact-detail-item {
 	font-size: large;
 }
+
+.account-detail-header {
+	display: flex;
+	justify-content: space-between;
+}
+.account-detail-header .delete:hover {
+	color: rgb(253, 110, 110);
+}
+.account-detail-header .edit:hover {
+	color: orange;
+}
+.product-details{
+	display: flex;
+	justify-content: space-around;
+}
+.product-details p {
+	overflow: auto;
+}
