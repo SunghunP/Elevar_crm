@@ -1,100 +1,109 @@
-html,body {
-	height: 100vh;
+html,
+body {
+  height: 100vh;
 }
 
 main {
-	height: 100%;
+  height: 100%;
 }
 
 main.row {
-	margin: 0px;
-	padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .flex {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .flex.flex-col {
-	flex-direction: column;
+  flex-direction: column;
 }
 
 .menu-item {
-	text-decoration: none;
-	color: black;
-	font-size: 25px;
-	height: 60px;
-	border: solid black 1px;
-	padding: 15px;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  height: 40px;
+  border: solid black 1px;
+  padding: 5px;
 }
 
 .menu-card {
-	width: 100%;
-	margin: 20px
+  width: 90%;
+  margin: 10px;
+
+  
+}
+.h4{
+ font-size: 25px; 
+ font-weight: bold;
+ margin: 25px;
 }
 
-.menu-card, .menu-link, .menu-item {
-	border-radius: 15px;
+.menu-card,
+.menu-link,
+.menu-item {
+  border-radius: 15px;
 }
 
 .menu-left-align {
-	width: 100%;
+  width: 100%;
 }
 
 div.menu.col {
-	width: 100%;
-	border-right: 1px solid black;
-	height: 100%;
+  width: 100%;
+  border-right: 3px solid rgb(229, 229, 229);
+  height: 100%;
 }
 
 div.content {
-	height: 100%;
-	overflow: scroll;
+  height: 100%;
+  overflow: scroll;
 }
 
 i.fa-solid {
-	margin: 5px;
-	margin-right: 10px;
+  margin: 5px;
+  margin-right: 10px;
 }
 
 .row .col.s3 {
-	margin: 0px;
-	padding: 0px auto;
+  margin: 0px;
+  padding: 0px auto;
 }
 
 .contact-details-title {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 .contact-details-title h1 {
-	margin: 20px 0px;
+  margin: 20px 0px;
 }
 
 .medium.material-icons {
-	margin: 5px 10px;
-
+  margin: 5px 10px;
 }
 
 .card {
-	overflow: auto;
-	max-height: 300px;
+  overflow: auto;
+  max-height: auto;
 }
 
 .products {
-	overflow: auto;
-	max-height: 700px;
+  overflow: auto;
+  max-height: 700px;
 }
 
 .contact-details-wrapper {
-	height: 250px;
-	margin: 10px;
+  height: 250px;
+  margin: 10px;
 }
 
 .contact-details {
-	justify-content: space-around;
-	box-sizing: border-box;
+  justify-content: space-around;
+  box-sizing: border-box;
 }
 
 .contact-detail-item {
@@ -105,6 +114,7 @@ i.fa-solid {
 	display: flex;
 	justify-content: space-between;
 }
+
 .account-detail-header .delete:hover {
 	color: rgb(253, 110, 110);
 }
@@ -117,4 +127,33 @@ i.fa-solid {
 }
 .product-details p {
 	overflow: auto;
+}
+.account-detail-header a:hover {
+	color: red;
+}
+
+[id=myChart], .bruh {
+	max-height: 500px;
+	max-width: 500px;
+  font-size: large;
+}
+
+#headshot {
+  border-radius: 50%;
+  width: 70%;
+  margin-top: 1.4em;
+}
+
+.center-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#about-card {
+	margin-top: 3em;
+}
+
+.about-icon{
+	padding: .6em;
 }

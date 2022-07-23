@@ -1,4 +1,119 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1>About</h1>
-{% endblock %}
+{% extends 'base.html' %} {% block content %} {% load static %}
+<h3 class="center-align">Our Developers</h3>
+
+  <div class="row center-align">
+    <div class="col s4">
+      <div id="about-card" class="card">
+        <div class="card-image">
+          <img
+            class="center-image"
+            id="headshot"
+            src="{% static 'images/kylepic.png' %}"
+            alt="My Image"
+          />
+        </div>
+        <div class="card-content">
+          <h4>Kyle Canamar</h4>
+          <h5>Full Stack Developer</h5>
+          <h5>Seattle, US</h5>
+        </div>
+        <div class="card-content">
+          <a
+            class='about-icon'
+            
+            href="https://www.linkedin.com/in/kyle-canamar/"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin small about-icon"></i
+          ></a>
+          <a
+
+            href=""
+            target="_blank"
+            ><i class="fa-solid fa-briefcase small about-icon"></i></a>
+          <a
+      
+            href="https://www.github.com/kcanamar/"
+            target="_blank"
+            ><i class="fa-brands fa-github small about-icon"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+   <div class="col s4">
+      <div id="about-card" class="card">
+        <div class="card-image">
+          <img
+            class="center-image"
+            id="headshot"
+            src="{% static 'images/joepic.png' %}"
+            alt="My Image"
+          />
+        </div>
+        <div class="card-content">
+          <h4>Sunghun Park</h4>
+          <h5>Full Stack Developer</h5>
+          <h5>Seattle, US</h5>
+        </div>
+        <div class="card-content">
+          <a
+            class='about-icon'
+            
+            href="https://www.linkedin.com/in/sunghunp/"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin small about-icon"></i
+          ></a>
+          <a
+
+            href=""
+            target="_blank"
+            ><i class="fa-solid fa-briefcase small about-icon"></i></a>
+          <a
+      
+            href="https://github.com/SunghunP/"
+            target="_blank"
+            ><i class="fa-brands fa-github small about-icon"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+     <div class="col s4">
+      <div id="about-card" class="card">
+        <div class="card-image">
+          <img
+            class="center-image"
+            id="headshot"
+            src="{% static 'images/kylepic.png' %}"
+            alt="My Image"
+          />
+        </div>
+        <div class="card-content">
+          <h4>Nathan Yi</h4>
+          <h5>Full Stack Developer</h5>
+          <h5>Dallas, Tx</h5>
+        </div>
+        <div class="card-content">
+          <a
+            class='about-icon'
+            
+            href="https://www.linkedin.com/in/yi-nathan/"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin small about-icon"></i
+          ></a>
+          <a
+
+            href=""
+            target="_blank"
+            ><i class="fa-solid fa-briefcase small about-icon"></i></a>
+          <a
+      
+            href="https://www.github.com/yinathan"
+            target="_blank"
+            ><i class="fa-brands fa-github small about-icon"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
