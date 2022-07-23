@@ -86,3 +86,17 @@ i.fa-solid {
 	overflow: auto;
 	max-height: 700px;
 }
+
+.contact-details-wrapper {
+	height: 250px;
+	margin: 10px;
+}
+
+.contact-details {
+	justify-content: space-around;
+	box-sizing: border-box;
+}
+
+.contact-detail-item {
+	font-size: large;
+}
