@@ -78,7 +78,11 @@ def signup(request):
 @login_required
 def account_index(request):
     accounts = Account.objects.filter(user=request.user)
-    return render(request, 'account/index.html', {'accounts': accounts})
+    account_form = AccountForm()
+    return render(request, 'account/index.html', {
+        'accounts': accounts,
+        'account_form': account_form,
+    })
 
 
 @login_required
@@ -99,16 +103,15 @@ def account_detail(request, account_id):
     })
   
 
+@login_required
+def account_create(request):
+    form = AccountForm(request.POST)
+    if form.is_valid():
+        new_contact = form.save(commit=False)
+        new_contact.user = request.user
+        new_contact.save()
+    return redirect('account_index')
 
-
-class AccountCreate(LoginRequiredMixin, CreateView):
-    model = Account
-    fields = ['company_name', 'industry', 'state', 'city', 'country', 'zip', 'description']
-
-    def form_valid(self, form):
-        ## this is assigning the logged in user 
-        form.instance.user = self.request.user
-        return super().form_valid(form)
 
 class AccountUpdate(LoginRequiredMixin, UpdateView):
     model = Account
