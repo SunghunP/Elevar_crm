@@ -16,8 +16,15 @@ BUCKET = 'elevar-crm-project'
 
 # Create your views here.
 def home(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+    
     return render(request, 'home.html')
 
+@login_required
+def dashboard(request):
+    # todo transactions go here
+    return render(request, 'dashboard.html')
 
 def about(request):
     return render(request, 'about.html')

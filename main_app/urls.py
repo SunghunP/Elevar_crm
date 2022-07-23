@@ -9,6 +9,8 @@ urlpatterns = [
     path('account/signup/', views.signup, name='signup'),
     # about route
     path('about/', views.about, name='about'),
+    # dashboard route
+    path('dashboard/', views.dashboard, name="dashboard"),
 
     ###############
     ## account
