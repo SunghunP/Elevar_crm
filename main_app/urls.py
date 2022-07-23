@@ -35,7 +35,8 @@ urlpatterns = [
     # # detail route for contacts
     path('contact/<int:pk>/', views.ContactDetail.as_view(), name="contact_detail"),
     # create route for contacts
-    path('contact/create/', views.ContactCreate.as_view(), name="contact_create"),
+    # path('contact/create/', views.ContactCreate.as_view(), name="contact_create"),
+    path('account/<int:account_id>/contact_create/', views.contact_create, name="contact_create"),
     # update route for contacts
     path('contact/<int:pk>/update', views.ContactUpdate.as_view(), name="contact_update"),
     # delete route for card
