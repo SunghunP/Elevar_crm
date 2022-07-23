@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 from .views import line_chart, line_chart_json
-from .views import bar_chart, bar_chart_json, pie_chart, pie_chart_json
 
 urlpatterns = [
     # graphs
