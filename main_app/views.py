@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
 from .models import Account, Contact, Photo, Product
+from .forms import ContactForm
 
 S3_BASE_URL = 'https://s3.us-west-2.amazonaws.com/'
 BUCKET = 'elevar-crm-project'
@@ -50,12 +51,15 @@ def account_detail(request, account_id):
     account = Account.objects.get(id=account_id, user=request.user)
     #todo! rendering product in details page
     # product = Product.objects.get(id=product_id, user=request.user)
+
     if not account.user == request.user:
         return redirect('home')
+    contact_form = ContactForm()
     employees = Contact.objects.filter(account_id = account_id)
     return render(request, 'account/detail.html', {
         'account': account,
         'employees': employees,
+        'contact_form': contact_form,
         # 'product' : product,
     })
   
@@ -114,9 +118,16 @@ class ContactDetail(LoginRequiredMixin, DetailView):
     #         return redirect('home')
     #     return contact
 
-class ContactCreate(LoginRequiredMixin, CreateView):
-    model = Contact
-    fields = ['first_name', 'last_name', 'title', 'phone', 'email']
+def contact_create(request, account_id):
+    account = Account.objects.get(id=account_id, user=request.user)
+    if not account.user == request.user:
+        return redirect('home')
+    form = ContactForm(request.POST)
+    if form.is_valid():
+        new_contact = form.save(commit=False)
+        new_contact.account_id = account_id
+        new_contact.save()
+    return redirect('account_detail', account_id=account_id)
 
 class ContactUpdate(LoginRequiredMixin, UpdateView):
     model = Contact
