@@ -100,3 +100,15 @@ i.fa-solid {
 .contact-detail-item {
 	font-size: large;
 }
+
+.account-detail-header {
+	display: flex;
+	justify-content: space-between;
+}
+.account-detail-header a:hover {
+	color: red;
+}
+
+[id=myChart]{
+	width: 250px;
+}

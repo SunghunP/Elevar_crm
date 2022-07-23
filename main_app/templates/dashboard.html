@@ -1,6 +1,62 @@
 {% extends 'base.html'%}
 {% block content%}
 
-<h1>Home<h1>
+<h1>Dashboard<h1>
 
+<div class="dashboard-wrapper">
+	<div class="bruh">
+		<canvas id="myChart"></canvas>
+		<canvas id="myChart1"></canvas>
+		<canvas id="myChart2"></canvas>
+	</div>
+	
+	<div class="row">
+		<div class="card col s6">
+			<div class="card-content">
+				<span class="card-title">Total deals</span>
+				<p style="color: green;">Active: 300</p>
+				<p style="color: red;">Incomplete: 100</p>
+				<p style="color: purple;">In Progress: 50</p>
+			</div>
+			<div class="card-action">
+				<a href="#">Accounts</a>
+			</div>
+		</div>
+		<div class="card col s6">
+			<div class="card-content">
+				<span class="card-title">Total Revenue By Acc</span>
+				<p>Google: $300k</p>
+				<p>Apple: $1000</p>
+				<p>In N Out: $50M</p>
+			</div>
+			<div class="card-action">
+				<a href="#">Accounts</a>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="card col s6">
+			<div class="card-content">
+				<span class="card-title">Total deals</span>
+				<p style="color: green;">Active: 300</p>
+				<p style="color: red;">Incomplete: 100</p>
+				<p style="color: purple;">In Progress: 50</p>
+			</div>
+			<div class="card-action">
+				<a href="#">Accounts</a>
+			</div>
+		</div>
+		<div class="card col s6">
+			<div class="card-content">
+				<span class="card-title">Total deals</span>
+				<p style="color: green;">Active: 300</p>
+				<p style="color: red;">Incomplete: 100</p>
+				<p style="color: purple;">In Progress: 50</p>
+			</div>
+			<div class="card-action">
+				<a href="#">Accounts</a>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
