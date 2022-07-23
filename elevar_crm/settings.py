@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import environ
+
+import elevar_crm
 env = environ.Env()
 environ.Env.read_env()
 from pathlib import Path
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    'elevar_crm',
 ]
 
 MIDDLEWARE = [
