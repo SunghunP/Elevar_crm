@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
 from .models import Account, Contact, Photo, Product
-from .forms import ContactForm
+from .forms import ContactForm, AccountForm
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 from chartjs.views.columns import BaseColumnsHighChartsView
