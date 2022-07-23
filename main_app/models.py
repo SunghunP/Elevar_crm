@@ -1,5 +1,7 @@
 from django.db import models
+from django.forms import IntegerField
 from django.urls import reverse
+from datetime import date
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -53,4 +55,10 @@ class Photo(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
 	def __str__(self):
 		return f'Photo for product_id: {self.product_id} @{self.url}'
-	
+
+# Transaction Model
+# class Transactions(models.Model):
+# 	serial_number = IntegerField()
+# 	date = models.DateField('transaction date')
+# 	price = models.IntegerField()
+# 	account = models.ForeignKey(Account, on_delete=models.CASCADE)
