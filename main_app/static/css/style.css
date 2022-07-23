@@ -49,7 +49,8 @@ div.menu.col {
 }
 
 div.content {
-	height: 80%;
+	height: 100%;
+	overflow: scroll;
 }
 
 i.fa-solid {
@@ -74,4 +75,14 @@ i.fa-solid {
 .medium.material-icons {
 	margin: 5px 10px;
 
+}
+
+.card {
+	overflow: auto;
+	max-height: 300px;
+}
+
+.products {
+	overflow: auto;
+	max-height: 700px;
 }
