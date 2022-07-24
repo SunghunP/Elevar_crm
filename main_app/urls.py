@@ -65,7 +65,7 @@ urlpatterns = [
     ## Relationships
     #################
     # # 1:M account to transactions
-    # path('account/<int:account_id>/add_trans/', views.add_trans, name="add_trans"),
+    path('account/<int:account_id>/add_transaction/', views.add_transaction, name="add_transaction"),
     # # M:M associating a account to products
     path('account/<int:account_id>/assoc_product/<int:product_id>/', views.assoc_product, name="assoc_product"),
     # # route for removing a product from a account

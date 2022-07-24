@@ -8,12 +8,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
-from .models import Account, Contact, Photo, Product
-from .forms import ContactForm
+from .models import Account, Contact, Photo, Product, Transactions
+from .forms import ContactForm, AccountForm, TransactionForm
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 from chartjs.views.columns import BaseColumnsHighChartsView
-from chartjs.views.pie import HighChartPieView
 
 class LineChartJSONView(BaseLineChartView):
     def get_labels(self):
@@ -100,7 +99,6 @@ def account_detail(request, account_id):
         'contact_form': contact_form,
         'products' : products,
     })
-  
 
 @login_required
 def account_create(request):
@@ -240,4 +238,19 @@ def assoc_product(request, account_id, product_id):
 @login_required
 def remove_product(request, account_id, product_id):
     Account.objects.get(id=account_id, user=request.user).products.remove(product_id)
+    return redirect('account_detail', account_id=account_id)
+
+#########################
+## Transactions 
+#########################
+@login_required
+def add_transaction(request, account_id):
+    account = Account.objects.get(id=account_id, user=request.user)
+    if not account.user == request.user:
+        return redirect('home')
+    form = TransactionForm(request.POST)
+    if form.is_valid():
+        new_transaction = form.save(commit=False)
+        new_transaction.account_id = account_id
+        new_transaction.save()
     return redirect('account_detail', account_id=account_id)
