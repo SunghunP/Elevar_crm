@@ -70,9 +70,4 @@ urlpatterns = [
     path('account/<int:account_id>/assoc_product/<int:product_id>/', views.assoc_product, name="assoc_product"),
     # # route for removing a product from a account
     path('account/<int:account_id>/remove_product/<int:product_id>/', views.remove_product, name="remove_product"),
-    # # M:M associating a contacts to account
-    # path('account/<int:account_id>/assoc_contact/<int:contact>/', views.assoc_contact, name="assoc_contact"),
-    # # route for removing a contact from a account
-    # path('account/<int:account_id>/remove_contact/<int:contact>/', views.remove_contact, name="remove_contact"),
-
 ]

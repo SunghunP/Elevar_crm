@@ -1,4 +1,5 @@
 from ast import Del
+from dataclasses import fields
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -90,6 +91,7 @@ def account_detail(request, account_id):
     #todo! rendering product in details page
     if not account.user == request.user:
         return redirect('home')
+    transaction_form = TransactionForm()
     contact_form = ContactForm()
     products = Product.objects.all()
     employees = Contact.objects.filter(account_id = account_id)
@@ -97,6 +99,7 @@ def account_detail(request, account_id):
         'account': account,
         'employees': employees,
         'contact_form': contact_form,
+        'transaction_form': transaction_form,
         'products' : products,
     })
 
@@ -254,3 +257,9 @@ def add_transaction(request, account_id):
         new_transaction.account_id = account_id
         new_transaction.save()
     return redirect('account_detail', account_id=account_id)
+
+class TransactionUpdate(LoginRequiredMixin, UpdateView):
+
+    class Meta:
+        model = Transactions
+        fields = ['status']

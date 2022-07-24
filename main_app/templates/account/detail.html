@@ -46,7 +46,7 @@
         <!-- Transaction lands here -->
         <form action="{% url 'add_transaction' account.id %}" method="post">
           {% csrf_token %}
-          {{ transaction_form.as_p }}
+          {{ transaction_form.as_table }}
           <input type="submit" class="btn" value="Add Transaction">
         </form>
         <table class="striped">
@@ -54,11 +54,12 @@
             <tr><th>Date</th><th>Status</th><th>Transaction #</th></tr>
           </thead>
           <tbody>
-            {% for transaction in account.transactions.all %}
+            {% for transaction in account.transactions_set.all %}
             <tr>
               <td>{{transaction.date}}</td>
               <td>{{transaction.status}}</td>
               <td>{{transaction.serial_number}}</td>
+              <td><a href="" class='btn'><i class="material-icons">edit</i></a></td>
             </tr>
             {% endfor %}
           </tbody>

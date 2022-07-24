@@ -15,4 +15,4 @@ class AccountForm(ModelForm):
 class TransactionForm(ModelForm):
     class Meta:
         model = Transactions
-        fields = ['date', 'status', 'price']
+        fields = ['date', 'price']
