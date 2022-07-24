@@ -157,3 +157,29 @@ i.fa-solid {
 .about-icon{
 	padding: .6em;
 }
+
+#logo{
+	width: 300px;
+	height: auto;
+}
+
+.logo-container{
+	margin-top: 1em;
+}
+
+.nav-logo{
+	width: 150px;
+	height: auto;
+	padding-top: 15px;
+	overflow: hidden;
+}
+
+.intro{
+	width: 50rem;
+	margin: 0 auto;
+}
+
+#about {
+	display: flex;
+	justify-content: center;
+}
