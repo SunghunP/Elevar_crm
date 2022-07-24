@@ -30,7 +30,7 @@
     <nav class="teal">
       <div class="nav-wrapper">
         <ul>
-          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Elevar-CRM</a></li>
+          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;<img class="nav-logo" src="{% static 'images/logo-name.png' %}"></a></li>
         </ul>
         <ul class="right">
           {% comment %} important to include the leading / in th HTML {% endcomment %}
@@ -49,7 +49,7 @@
   </header>
   <main class="row">
     {% if user.is_authenticated %}
-      <div class="menu col s2 valign-wrapper center-align">
+      <div class="col s2 valign-wrapper center-align">
         <ul class="menu left-align">
           <div class="menu-card-title"><li class="menu-title"><h4 class='h4'>My Work</h4></li></div>
           <div class="menu-card hoverable"><a class="menu-link" href="{% url 'dashboard' %}"><li class="menu-item"><i class="fa-solid fa-rocket"></i><span>Dashboard</span></li></a></div>
@@ -62,10 +62,12 @@
           <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-lightbulb"></i><span>Opportunities</span></li></a></div>
         </ul>
       </div>
+          <div class="content col s10 ">
+
       {% else %}
+          <div class="content col s12 ">
 
       {% endif %}
-    <div class="content col s10 ">
       {% block content %}
       {% endblock %}
     </div>

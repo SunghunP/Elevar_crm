@@ -1,6 +1,27 @@
 {% extends 'base.html'%}
 {% block content%}
+{% load static%}
 
-<h1>Home<h1>
+<div class='center-align logo-container'>
+    <img id="logo" src="{% static 'images/elevar-logo.png' %}" >
+    <div class="intro">
+    <p>We are Elevar!
+    </br>
+    </br>
+        What is Elevar CRM?
+    </br></br>  
 
+        Elevar CRM is built to assist anyone in sales, business development, marketing, customer service, or any other line of work, to manage relationships and interactions between clients and the business. 
+    </br></br>
+        Who developed Elevar?
+    </br></br>
+        We here at Elevar CRM are a small group of dedicated developers that are passionate about creating an efficient platform for business owners and employees to be able to grow in their respective industries by streamlining data from prospects/clients.
+    </p>
+    </div>
+    </br></br>
+    <a href="{% url 'signup' %}" class="btn">
+        Join Our Team
+    </a>
+
+</div>
 {% endblock %}
