@@ -33,13 +33,11 @@ main.row {
 .menu-card {
   width: 90%;
   margin: 10px;
-
-  
 }
 .h4{
- font-size: 25px; 
- font-weight: bold;
- margin: 25px;
+	font-size: 25px; 
+	font-weight: bold;
+	margin: 25px;
 }
 
 .menu-card,
@@ -80,6 +78,10 @@ i.fa-solid {
 }
 .contact-details-title h1 {
   margin: 20px 0px;
+}
+
+.contact-details-icons-wrapper a {
+	color: black;
 }
 
 .medium.material-icons {

@@ -5,69 +5,83 @@
 
 <div class="dashboard-wrapper">
 	<div class="row">
-		<div class="card col s6">
-			<div class="card-content">
-				<canvas id="myChart"></canvas>
+		<div class="col s6">
+			<div class="card ">
+				<div class="card-content">
+					<span class="card-title">Monthly Sales by Account</span>
+					<canvas id="myChart"></canvas>
+				</div>
 			</div>
 		</div>
-		<div class="card col s6">
-			<div class="card-content myChart">
-				<span class="card-title" id="myChart">Sales By User</span>
-				<p>Joe: 50M</p>
-				<p>Nathan: 100M</p>
-				<p>Kyle: 1000B</p>
+		<div class="col s6">
+			<div class="card">
+				<div class="card-content myChart">
+					<span class="card-title" id="myChart">Sales By User</span>
+					<p>Joe: 50M</p>
+					<p>Nathan: 100M</p>
+					<p>Kyle: 1000B</p>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	
 	<div class="row">
-		<div class="card col s6">
-			<div class="card-content">
-				<span class="card-title">Total Transactions</span>
-				<p style="color: green;">Active: 300</p>
-				<p style="color: red;">Incomplete: 100</p>
-				<p style="color: purple;">In Progress: 50</p>
-			</div>
-			<div class="card-action">
-				<a href="#">Transactions</a>
+		<div class="col s6">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">Total Transactions</span>
+					<p style="color: green;">Active: 300</p>
+					<p style="color: red;">Incomplete: 100</p>
+					<p style="color: purple;">In Progress: 50</p>
+				</div>
+				<div class="card-action">
+					<a href="#">Transactions</a>
+				</div>
 			</div>
 		</div>
-		<div class="card col s6">
-			<div class="card-content">
-				<span class="card-title">Total Revenue By Acc</span>
-				<p>Google: $300k</p>
-				<p>Apple: $1000</p>
-				<p>In N Out: $50M</p>
-			</div>
-			<div class="card-action">
-				<a href="{% url 'account_index' %}">Accounts</a>
+		<div class='col s6'>
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">Total Revenue By Acc</span>
+					<p>Google: $300k</p>
+					<p>Apple: $1000</p>
+					<p>In N Out: $50M</p>
+				</div>
+				<div class="card-action">
+					<a href="{% url 'account_index' %}">Accounts</a>
+				</div>
 			</div>
 		</div>
 	</div>
+
 	<div class="row">
-		<div class="card col s6">
-			<div class="card-content">
-				<span class="card-title">Products Sold</span>
-				<p style="color: lightgreen;">Keys: 300</p>
-				<p style="color: lemonchiffon;">Cards: 300</p>
-				<p style="color: blueviolet;">Bees: 300</p>
-				<p style="color: pink;">Boards: 100</p>
-				<p style="color: lightcoral;">Monitors: 50</p>
-			</div>
-			<div class="card-action">
-				<a href="#">Products</a>
+		<div class="col s6">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">Products Sold</span>
+					<p style="color: lightgreen;">Keys: 300</p>
+					<p style="color: lemonchiffon;">Cards: 300</p>
+					<p style="color: blueviolet;">Bees: 300</p>
+					<p style="color: pink;">Boards: 100</p>
+					<p style="color: lightcoral;">Monitors: 50</p>
+				</div>
+				<div class="card-action">
+					<a href="#">Products</a>
+				</div>
 			</div>
 		</div>
-		<div class="card col s6">
-			<div class="card-content">
-				<span class="card-title">Transaction by Contacts</span>
-				<p style="color: yellowgreen;">Jimbo: 14</p>
-				<p style="color: royalblue;">Thrimbo: 16</p>
-				<p style="color: peru;">Limbo: 14</p>
-			</div>
-			<div class="card-action">
-				<a href="{% url 'contact_index' %}">Contacts</a>
+
+		<div class="col s6">
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">Transaction by Contacts</span>
+					<p style="color: yellowgreen;">Jimbo: 14</p>
+					<p style="color: royalblue;">Thrimbo: 16</p>
+					<p style="color: peru;">Limbo: 14</p>
+				</div>
+				<div class="card-action">
+					<a href="{% url 'contact_index' %}">Contacts</a>
+				</div>
 			</div>
 		</div>
 	</div>
