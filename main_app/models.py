@@ -59,22 +59,22 @@ class Photo(models.Model):
 		return f'Photo for product_id: {self.product_id} @{self.url}'
 
 # Transaction Model
-# STATUS = (
-# 	('I', 'Incomplete'),
-# 	('P', 'In Progress'),
-# 	('C', 'Completed'),
-# )
-# class Transactions(models.Model):
-# 	serial_number =  models.CharField(max_length=100, default=uuid.uuid4().hex[:6]) 
-# 	date = models.DateField('transaction date')
-# 	status = models.CharField(
-# 		max_length=1,
-# 		choices=STATUS,
-# 		default=STATUS[0][0]
-# 	)
-# 	price = models.IntegerField()
-# 	account = models.ForeignKey(Account, on_delete=models.CASCADE)
-# 	def __str__(self):
-# 		return f'Transaction #{self.serial_number}: {self.account.company_name} {self.price} {self.date}'
-# 	class Meta:
-# 		ordering = ['-date']
+STATUS = (
+	('I', 'Incomplete'),
+	('P', 'In Progress'),
+	('C', 'Completed'),
+)
+class Transactions(models.Model):
+	serial_number =  models.CharField(max_length=100, default=uuid.uuid4().hex[:6]) 
+	date = models.DateField('transaction date')
+	status = models.CharField(
+		max_length=1,
+		choices=STATUS,
+		default=STATUS[0][0]
+	)
+	price = models.IntegerField()
+	account = models.ForeignKey(Account, on_delete=models.CASCADE)
+	def __str__(self):
+		return f'Transaction #{self.serial_number}: {self.account.company_name} {self.price} {self.date}'
+	class Meta:
+		ordering = ['-date']
