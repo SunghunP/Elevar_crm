@@ -76,5 +76,9 @@ class Transactions(models.Model):
 	account = models.ForeignKey(Account, on_delete=models.CASCADE)
 	def __str__(self):
 		return f'Transaction #{self.serial_number}: {self.account.company_name} {self.price} {self.date}'
+
+	# def get_absolute_url(self):
+	# 	return reverse("account_detail", kwargs={"account_id": self.objects.account_id})
+	
 	class Meta:
 		ordering = ['-date']

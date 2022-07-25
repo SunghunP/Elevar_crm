@@ -59,7 +59,7 @@
               <td>{{transaction.date}}</td>
               <td>{{transaction.status}}</td>
               <td>{{transaction.serial_number}}</td>
-              <td><a href="{% url 'transaction_update'%}" class='btn'><i class="material-icons">edit</i></a></td>
+              <td><a href="{% url 'transaction_update' transaction.id %}" class='btn'><i class="material-icons">edit</i></a></td>
             </tr>
             {% endfor %}
           </tbody>
