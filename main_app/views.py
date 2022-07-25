@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
 import uuid
 import boto3
 from .models import Account, Contact, Photo, Product, Transactions
@@ -267,3 +268,7 @@ def add_transaction(request, account_id):
 class TransactionsUpdate(LoginRequiredMixin, UpdateView):
     model = Transactions
     fields = ['status']
+
+
+    def get_success_url(self):
+        return reverse('account_detail', kwargs={'account_id': self.object.account_id})
