@@ -60,12 +60,12 @@ class Photo(models.Model):
 
 # Transaction Model
 STATUS = (
-	('I', 'Incomplete'),
 	('P', 'In Progress'),
+	('I', 'Incomplete'),
 	('C', 'Completed'),
 )
 class Transactions(models.Model):
-	serial_number =  models.CharField(max_length=100, default=uuid.uuid4().hex[:6]) 
+	serial_number =  models.CharField(max_length=100, default=000000) 
 	date = models.DateField('transaction date')
 	status = models.CharField(
 		max_length=1,
