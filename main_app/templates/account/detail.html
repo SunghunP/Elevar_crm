@@ -46,7 +46,7 @@
         <!-- Transaction lands here -->
         <form action="{% url 'add_transaction' account.id %}" method="post">
           {% csrf_token %}
-          {{ transaction_form.as_table }}
+          {{ transaction_form.as_p }}
           <input type="submit" class="btn" value="Add Transaction">
         </form>
         <table class="striped">
@@ -59,7 +59,7 @@
               <td>{{transaction.date}}</td>
               <td>{{transaction.status}}</td>
               <td>{{transaction.serial_number}}</td>
-              <td><a href="" class='btn'><i class="material-icons">edit</i></a></td>
+              <td><a href="{% url 'transaction_update'%}" class='btn'><i class="material-icons">edit</i></a></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -159,18 +159,5 @@
     </div>
   </div>
 </div>
-<script>
-  // create a datepicker
-  let dateEl = document.getElementById('id_date');
-  M.Datepicker.init(dateEl, {
-    format: 'yyyy-mm-dd',
-    defaultDate: new Date(),
-    setDefaultDate: true,
-    autoClose: true
-  });
 
-  // initialize the format select
-  let selectEl = document.getElementById('id_formats');
-  M.FormSelect.init(selectEl);
-</script>
 {% endblock %}

@@ -185,3 +185,6 @@ i.fa-solid {
 	display: flex;
 	justify-content: center;
 }
+#id_status select {
+  padding: 5rem;
+}

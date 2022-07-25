@@ -62,6 +62,11 @@ urlpatterns = [
     path('product/<int:product_id>/add_photo/', views.add_photo, name="add_photo"),
 
     #################
+    ## Transactions
+    #################
+    # Update / Change Status transaction
+    path('transaction/<int:pk>/update/', views.TransactionsUpdate.as_view(), name="transaction_update"),
+    #################
     ## Relationships
     #################
     # # 1:M account to transactions

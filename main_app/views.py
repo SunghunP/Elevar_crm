@@ -161,10 +161,14 @@ def contact_create(request, account_id):
     if not account.user == request.user:
         return redirect('home')
     form = ContactForm(request.POST)
-    if form.is_valid():
-        new_contact = form.save(commit=False)
-        new_contact.account_id = account_id
-        new_contact.save()
+    try:
+        if form.is_valid():
+            new_contact = form.save(commit=False)
+            new_contact.account_id = account_id
+            new_contact.save()
+            print(f'{form}: <<<<----- this is the form : This is the new contact ------>>>> {new_contact} ')
+    except:
+        return redirect('account_detail', print(f'{form}: <<<<----- this is the form'), account_id=account_id)
     return redirect('account_detail', account_id=account_id)
 
 class ContactUpdate(LoginRequiredMixin, UpdateView):
@@ -252,14 +256,14 @@ def add_transaction(request, account_id):
     if not account.user == request.user:
         return redirect('home')
     form = TransactionForm(request.POST)
+    print(f'{form} <<----- this is the transactions form')
     if form.is_valid():
         new_transaction = form.save(commit=False)
+        new_transaction.serial_number = uuid.uuid4().hex[:6]
         new_transaction.account_id = account_id
         new_transaction.save()
     return redirect('account_detail', account_id=account_id)
 
-class TransactionUpdate(LoginRequiredMixin, UpdateView):
-
-    class Meta:
-        model = Transactions
-        fields = ['status']
+class TransactionsUpdate(LoginRequiredMixin, UpdateView):
+    model = Transactions
+    fields = ['status']

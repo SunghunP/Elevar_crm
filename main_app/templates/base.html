@@ -77,5 +77,19 @@
       <div class="container right">All Rights Reserved,&copy; 2022 Elevar-CRM &nbsp;</div>
     </div>
 </footer>
+<script>
+  // create a datepicker
+  let dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+
+  // initialize the format select
+  let selectEl = document.getElementById('id_status');
+  M.FormSelect.init(selectEl);
+</script>
 </body>
 </html>
