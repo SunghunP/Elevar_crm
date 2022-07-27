@@ -49,18 +49,18 @@
   </header>
   <main class="row">
     {% if user.is_authenticated %}
-      <div class="col s2 valign-wrapper center-align">
-        <ul class="menu left-align">
-          <div class="menu-card-title"><li class="menu-title"><h4 class='h4'>My Work</h4></li></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="{% url 'dashboard' %}"><li class="menu-item"><i class="fa-solid fa-rocket"></i><span>Dashboard</span></li></a></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-clipboard"></i><span>Activities</span></li></a></div>
-          <div class="menu-card-title"><li class="menu-title"><h4 class='h4'>Customers</h4></li></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="{% url 'contact_index' %}"><li class="menu-item"><i class="fa-solid fa-address-card"></i><span>Contacts</span></li></a></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="{% url 'account_index' %}"><li class="menu-item"><i class="fa-solid fa-address-book"></i><span>Accounts</span></li></a></div>
-          <div class="menu-card-title"><li class="menu-title"><h4 class='h4'>Sales</h4></li></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-star"></i><span>Leads</span></li></a></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-lightbulb"></i><span>Opportunities</span></li></a></div>
-        </ul>
+      <div class="nav-menu col s2 valign-wrapper center-align">
+        <div class="nav-menu-wrapper">
+          <ul class="menu left-align">
+            <div class="menu-card-title"><li class="menu-title"><h4 class='h4'>DashBoard</h4></li></div>
+            <div class="menu-card hoverable"><a class="menu-link" href="{% url 'dashboard' %}"><li class="menu-item"><i class="fa-solid fa-rocket"></i><span>My Work</span></li></a></div>
+            <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-clipboard"></i><span>Activities</span></li></a></div>
+            <div class="menu-card hoverable"><a class="menu-link" href="{% url 'contact_index' %}"><li class="menu-item"><i class="fa-solid fa-address-card"></i><span>Contacts</span></li></a></div>
+            <div class="menu-card hoverable"><a class="menu-link" href="{% url 'account_index' %}"><li class="menu-item"><i class="fa-solid fa-address-book"></i><span>Accounts</span></li></a></div>
+            <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-star"></i><span>Leads</span></li></a></div>
+            <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-lightbulb"></i><span>Opportunities</span></li></a></div>
+          </ul>
+        </div>
       </div>
           <div class="content col s10 ">
 

@@ -111,12 +111,15 @@ def account_detail(request, account_id):
     contact_form = ContactForm()
     products = Product.objects.all()
     employees = Contact.objects.filter(account_id=account_id)
+    product_not_in_acc = Product.objects.exclude(id__in = account.products.all().values_list('id'))
+
     return render(request, 'account/detail.html', {
         'account': account,
         'employees': employees,
         'contact_form': contact_form,
         'transaction_form': transaction_form,
         'products': products,
+        'prod' : product_not_in_acc,
     })
 
 
