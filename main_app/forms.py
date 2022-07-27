@@ -1,6 +1,6 @@
 from dataclasses import fields
 from django.forms import ModelForm
-from .models import Contact, Account, Transactions
+from .models import Contact, Account, Transaction
 
 class ContactForm(ModelForm):
     class Meta:
@@ -14,5 +14,5 @@ class AccountForm(ModelForm):
 
 class TransactionForm(ModelForm):
     class Meta:
-        model = Transactions
+        model = Transaction
         fields = ['date', 'price']

@@ -64,7 +64,7 @@ STATUS = (
 	('I', 'Incomplete'),
 	('C', 'Completed'),
 )
-class Transactions(models.Model):
+class Transaction(models.Model):
 	serial_number =  models.CharField(max_length=100, default=000000) 
 	date = models.DateField('transaction date')
 	status = models.CharField(
