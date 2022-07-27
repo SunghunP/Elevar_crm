@@ -25,13 +25,13 @@ class LineChartJSONView(BaseLineChartView):
 
     def get_providers(self):
         """Return names of datasets."""
-        return ["Apple", "Google", "Symmetra"]
+        return ["Apple", "Google", "Microsoft"]
 
     def get_data(self):
         """Return 3 datasets to plot."""
-        return [[75, 44, 92, 11, 44, 95, 35],
-                [41, 92, 18, 3, 73, 87, 92],
-                [87, 21, 94, 3, 90, 13, 65]]
+        return [[45, 48, 57, 55, 54, 59, 56],
+                [41, 44, 42, 47, 50, 48, 53],
+                [37, 41, 42, 46, 48, 54, 60]]
 
 
 class ColumnHighChartJSONView(BaseColumnsHighChartsView):
@@ -65,7 +65,23 @@ def home(request):
 @login_required
 def dashboard(request):
     # todo transactions go here
-    return render(request, 'dashboard.html')
+    accounts = Account.objects.filter(user=request.user)
+    # account = Account.objects.get(id=account_id, user=request.user)
+    # if not account.user == request.user:
+    #     return redirect('home')
+    products = Product.objects.all()
+    employees = Contact.objects.all()
+    transactions = Transaction.objects.all()
+
+
+    return render(request, 'dashboard.html', {
+        'accounts': accounts,
+        # 'account': account,
+        'products': products,
+        'employees': employees,
+        'transactions': transactions,
+    })
+
 
 
 def about(request):
