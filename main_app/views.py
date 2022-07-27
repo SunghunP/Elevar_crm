@@ -7,7 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
 import uuid
 import boto3
 from .models import Account, Contact, Photo, Product, Transactions
@@ -15,6 +14,7 @@ from .forms import ContactForm, AccountForm, TransactionForm
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 from chartjs.views.columns import BaseColumnsHighChartsView
+
 
 class LineChartJSONView(BaseLineChartView):
     def get_labels(self):
@@ -31,32 +31,39 @@ class LineChartJSONView(BaseLineChartView):
                 [41, 92, 18, 3, 73, 87, 92],
                 [87, 21, 94, 3, 90, 13, 65]]
 
+
 class ColumnHighChartJSONView(BaseColumnsHighChartsView):
     title = "Column Highchart test"
     yUnit = "%"
     providers = ["All"]
     credits = {"enabled": False}
 
+
 line_chart = TemplateView.as_view(template_name='line_chart.html')
 line_chart_json = LineChartJSONView.as_view()
 
 S3_BASE_URL = 'https://s3.us-west-2.amazonaws.com/'
-BUCKET = 'elevar-crm-project'
+BUCKET = env('S3_PICTURES_BUCKET')
 
 # Create your views here.
+
+
 def home(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
-    
+
     return render(request, 'home.html')
+
 
 @login_required
 def dashboard(request):
     # todo transactions go here
     return render(request, 'dashboard.html')
 
+
 def about(request):
     return render(request, 'about.html')
+
 
 def signup(request):
     error_message = ''
@@ -76,6 +83,7 @@ def signup(request):
 ## Account Views
 ################
 
+
 @login_required
 def account_index(request):
     accounts = Account.objects.filter(user=request.user)
@@ -87,7 +95,7 @@ def account_index(request):
 
 
 @login_required
-def account_detail(request, account_id): 
+def account_detail(request, account_id):
     account = Account.objects.get(id=account_id, user=request.user)
     #todo! rendering product in details page
     if not account.user == request.user:
@@ -95,14 +103,15 @@ def account_detail(request, account_id):
     transaction_form = TransactionForm()
     contact_form = ContactForm()
     products = Product.objects.all()
-    employees = Contact.objects.filter(account_id = account_id)
+    employees = Contact.objects.filter(account_id=account_id)
     return render(request, 'account/detail.html', {
         'account': account,
         'employees': employees,
         'contact_form': contact_form,
         'transaction_form': transaction_form,
-        'products' : products,
+        'products': products,
     })
+
 
 @login_required
 def account_create(request):
@@ -116,7 +125,8 @@ def account_create(request):
 
 class AccountUpdate(LoginRequiredMixin, UpdateView):
     model = Account
-    fields = ['company_name', 'industry', 'state', 'city', 'country', 'zip', 'description']
+    fields = ['company_name', 'industry', 'state',
+              'city', 'country', 'zip', 'description']
 
     def get_object(self, queryset=None):
         account = super(AccountUpdate, self).get_object()
@@ -137,6 +147,8 @@ class AccountDelete(LoginRequiredMixin, DeleteView):
 ################
 ## Contact Views
 ################
+
+
 class ContactList(LoginRequiredMixin, ListView):
     model = Contact
 
@@ -150,37 +162,34 @@ class ContactList(LoginRequiredMixin, ListView):
 class ContactDetail(LoginRequiredMixin, DetailView):
     model = Contact
 
-    #todo! authorization logic needed 
+    #todo! authorization logic needed
     # def get_object(self, queryset=None):
     #     contact = super(ContactDetail, self).get_object()
     #     if not contact.account == self.request.account:
     #         return redirect('home')
     #     return contact
 
+
 def contact_create(request, account_id):
     account = Account.objects.get(id=account_id, user=request.user)
     if not account.user == request.user:
         return redirect('home')
     form = ContactForm(request.POST)
-    try:
-        if form.is_valid():
-            new_contact = form.save(commit=False)
-            new_contact.account_id = account_id
-            new_contact.save()
-            print(f'{form}: <<<<----- this is the form : This is the new contact ------>>>> {new_contact} ')
-    except:
-        return redirect('account_detail', print(f'{form}: <<<<----- this is the form'), account_id=account_id)
+    if form.is_valid():
+        new_contact = form.save(commit=False)
+        new_contact.account_id = account_id
+        new_contact.save()
     return redirect('account_detail', account_id=account_id)
+
 
 class ContactUpdate(LoginRequiredMixin, UpdateView):
     model = Contact
     fields = ['first_name', 'last_name', 'title', 'phone', 'email']
 
+
 class ContactDelete(LoginRequiredMixin, DeleteView):
     model = Contact
     success_url = '/contact/'
-
-
 
 
 #################
@@ -199,9 +208,11 @@ class ProductList(LoginRequiredMixin, ListView):
 class ProductDetail(LoginRequiredMixin, DetailView):
     model = Product
 
+
 class ProductCreate(LoginRequiredMixin, CreateView):
     model = Product
     fields = ['name', 'price', 'description']
+
 
 class ProductUpdate(LoginRequiredMixin, UpdateView):
     model = Product
@@ -211,6 +222,7 @@ class ProductUpdate(LoginRequiredMixin, UpdateView):
 class ProductDelete(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = '/product/'
+
 
 @login_required
 def add_photo(request, product_id):
@@ -225,10 +237,11 @@ def add_photo(request, product_id):
     if photo_file:
         s3 = boto3.client('s3')
         # need a unique 'key' for s3 / needs file extension
-        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.')]
+        key = uuid.uuid4().hex[:6] + \
+            photo_file.name[photo_file.name.rfind('.')]
         print(f"this is key -->> {key}")
         # error handling
-        try: 
+        try:
             s3.upload_fileobj(photo_file, BUCKET, key)
             url = f"{S3_BASE_URL}{BUCKET}/{key}"
             photo = Photo(url=url, product_id=product_id)
@@ -238,37 +251,40 @@ def add_photo(request, product_id):
             print('An error occured')
     return redirect("product_detail", pk=product_id)
 
+
 @login_required
 def assoc_product(request, account_id, product_id):
-    Account.objects.get(id=account_id, user=request.user).products.add(product_id)
+    Account.objects.get(
+        id=account_id, user=request.user).products.add(product_id)
     return redirect('account_detail', account_id=account_id)
+
 
 @login_required
 def remove_product(request, account_id, product_id):
-    Account.objects.get(id=account_id, user=request.user).products.remove(product_id)
+    Account.objects.get(
+        id=account_id, user=request.user).products.remove(product_id)
     return redirect('account_detail', account_id=account_id)
 
 #########################
-## Transactions 
+## Transactions
 #########################
+
+
 @login_required
 def add_transaction(request, account_id):
     account = Account.objects.get(id=account_id, user=request.user)
     if not account.user == request.user:
         return redirect('home')
     form = TransactionForm(request.POST)
-    print(f'{form} <<----- this is the transactions form')
     if form.is_valid():
         new_transaction = form.save(commit=False)
-        new_transaction.serial_number = uuid.uuid4().hex[:6]
         new_transaction.account_id = account_id
         new_transaction.save()
     return redirect('account_detail', account_id=account_id)
 
-class TransactionsUpdate(LoginRequiredMixin, UpdateView):
-    model = Transactions
-    fields = ['status']
 
+class TransactionUpdate(LoginRequiredMixin, UpdateView):
 
-    def get_success_url(self):
-        return reverse('account_detail', kwargs={'account_id': self.object.account_id})
+    class Meta:
+        model = Transactions
+        fields = ['status']
