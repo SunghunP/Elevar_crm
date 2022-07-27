@@ -1,45 +1,52 @@
 {% extends 'base.html' %} {% block content %}
 <div class="flex flex-col">
   <h1 class="contact-details-title">
-    <span>{{contact}}</span>
+    <span>Contact Details</span>
     <div class="contact-details-icons-wrapper">
       <i class="medium material-icons">local_phone</i>
-      <a href="mailto:{{contact.email}}"><i class="medium material-icons">email</i></a>
+      <span class="right"><a href="mailto:{{contact.email}}"><i class="medium material-icons">email</i></a></span>
       <i class="medium material-icons">message</i>
     </div>
   </h1>
 
-  <div class="row flex contact-details">
-    <div class="col s8">
-      <div class="card blue-grey darken-1 contact-details-wrapper">
+  <div id="contact-details" class="contact-details">
+    <div class="col s5 offset-s1">
+      <div class="card #00796b teal darken-2 contact-details-wrapper hoverable z-depth-4">
         <div class="card-content white-text">
           <span class="card-title">
             {{ contact.first_name }} {{contact.last_name}}
           </span>
-          <p class="contact-detail-item">Phone: {{contact.phone}}</p>
-          <p class="contact-detail-item">Title: {{contact.title}}</p>
-          <p class="contact-detail-item">Email: {{contact.email}}</p>
-          <p class="contact-detail-item">
-            Company: {{contact.account.company_name}}
-          </p>
+          <ul class="contact-display">
+            <li class="contact-item">Phone: <span class="right">{{contact.phone}}</span></li>
+            <li class="contact-item">Title: <span class="right">{{contact.title}}</span></li>
+            <li class="contact-item">Email: <span class="right">{{contact.email}}</span></li>
+            <li class="contact-item">
+              Company: <span class="right">{{contact.account.company_name}}</span>
+            </li>
+          </ul>
         </div>
         <div class="card-action">
           <a href="{% url 'contact_update' contact.id %}">Edit</a>
-          <a href="{% url 'contact_delete' contact.id %}">Delete</a>
+          <a href="{% url 'contact_delete' contact.id %}" class="right">Delete</a>
         </div>
       </div>
     </div>
 
-    <div class="col s4">
-      <div class="card blue-grey darken-1 contact-details-wrapper">
+    <div class="col s5">
+      <div id="contact-account-card" class="card #00796b teal darken-2 contact-details-wrapper hoverable z-depth-4">
         <div class="card-content white-text">
           <span class="card-title"> {{contact.account.company_name}} </span>
-          <p class="contact-detail-item">{{contact.account.industry}}</p>
-          <p class="contact-detail-item">{{contact.account.description}}</p>
-          <p class="contact-detail-item">
-            {{contact.account.city}}, {{contact.account.state}},
-            {{contact.account.country}}
-          </p>
+          <ul class="contact-company-info ">
+            <li class="company-contact">Industry: <span class="right">{{contact.account.industry}}</span></li>
+            <hr>
+            <li class="location">Location:
+              <span class="right">
+                {{contact.account.city}}, {{contact.account.state}},
+                {{contact.account.country}}
+              </span>
+            </li>
+            <li class="company-contact right">Description: <br><blockquote class="flow-text">{{contact.account.description}}</blockquote></li>
+          </ul>
         </div>
       </div>
     </div>
