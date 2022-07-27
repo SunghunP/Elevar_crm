@@ -1,5 +1,6 @@
 from ast import Del
 from dataclasses import fields
+from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -292,3 +293,5 @@ class TransactionUpdate(LoginRequiredMixin, UpdateView):
     model = Transaction
     fields = ['status']
     
+    def get_success_url(self):
+        return reverse("account_detail", kwargs={"account_id": self.objects.account_id}) 
