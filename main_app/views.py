@@ -288,7 +288,6 @@ def add_transaction(request, account_id):
 
 
 class TransactionUpdate(LoginRequiredMixin, UpdateView):
-
-    class Meta:
-        model = Transaction
-        fields = ['status']
+    model = Transaction
+    fields = ['status']
+    
