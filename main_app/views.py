@@ -294,4 +294,4 @@ class TransactionUpdate(LoginRequiredMixin, UpdateView):
     fields = ['status']
     
     def get_success_url(self):
-        return reverse("account_detail", kwargs={"account_id": self.objects.account_id}) 
+        return reverse("account_detail", kwargs={"account_id": self.object.account_id}) 
