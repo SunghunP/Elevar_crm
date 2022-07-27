@@ -1,5 +1,6 @@
 from ast import Del
 from dataclasses import fields
+from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -9,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
-from .models import Account, Contact, Photo, Product, Transactions
+from .models import Account, Contact, Photo, Product, Transaction
 from .forms import ContactForm, AccountForm, TransactionForm
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
@@ -272,7 +273,7 @@ def remove_product(request, account_id, product_id):
     return redirect('account_detail', account_id=account_id)
 
 #########################
-## Transactions
+## Transaction
 #########################
 
 
@@ -285,12 +286,14 @@ def add_transaction(request, account_id):
     if form.is_valid():
         new_transaction = form.save(commit=False)
         new_transaction.account_id = account_id
+        new_transaction.serial_number = uuid.uuid4().hex[:10]
         new_transaction.save()
     return redirect('account_detail', account_id=account_id)
 
 
 class TransactionUpdate(LoginRequiredMixin, UpdateView):
-
-    class Meta:
-        model = Transactions
-        fields = ['status']
+    model = Transaction
+    fields = ['status']
+    
+    def get_success_url(self):
+        return reverse("account_detail", kwargs={"account_id": self.object.account_id}) 

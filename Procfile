@@ -1,0 +1,1 @@
+web: gunicorn elevar_crm.wsgi

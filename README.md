@@ -1,7 +1,5 @@
 # Elevar CRM
 
-
-
 ### Summary
 | Field   |      Detail      |  
 | -------- | :-----------: | 
@@ -70,6 +68,4 @@ Contact List
 
 About
 ![About](readme-images/aboutlive.png)
-
-
 

@@ -54,7 +54,7 @@
             <tr><th>Date</th><th>Status</th><th>Transaction #</th></tr>
           </thead>
           <tbody>
-            {% for transaction in account.transactions_set.all %}
+            {% for transaction in account.transaction_set.all %}
             <tr>
               <td>{{transaction.date}}</td>
               <td>{{transaction.status}}</td>

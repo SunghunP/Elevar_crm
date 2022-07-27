@@ -64,7 +64,7 @@ STATUS = (
 	('I', 'Incomplete'),
 	('C', 'Completed'),
 )
-class Transactions(models.Model):
+class Transaction(models.Model):
 	serial_number =  models.CharField(max_length=100, default=000000) 
 	date = models.DateField('transaction date')
 	status = models.CharField(
@@ -77,8 +77,8 @@ class Transactions(models.Model):
 	def __str__(self):
 		return f'Transaction #{self.serial_number}: {self.account.company_name} {self.price} {self.date}'
 
-	# def get_absolute_url(self):
-	# 	return reverse("account_detail", kwargs={"account_id": self.objects.account_id})
+	def get_absolute_url(self):
+		return reverse("account_detail", kwargs={"account_id": self.objects.account_id})
 	
 	class Meta:
 		ordering = ['-date']
