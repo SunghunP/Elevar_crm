@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Products List</h1>
+<h1>Products</h1>
+<div class="products row">
 
 {% for product in product_list %}
-  <a href="{% url 'product_detail' product.id %}">
+  <a href="{% url 'product_detail' product.id %}" class="col s4">
     <div class="card">
         <div class="card-content">
-            <span class="card-title">{{ product.name }}</span>
+            <span class="card-title">{{ product.name }} </span>
         </div>
     </div>
   </a>
 {% endfor %}
+</div>
 
 {% endblock %}

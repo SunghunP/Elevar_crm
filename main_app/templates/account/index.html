@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Accounts</h1>
+
+<div class="row">
+  <div class="col s5">
+    {% for account in accounts %}
+      <a href="{% url 'account_detail' account.id %}">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ account.company_name }}</span>
+            </div>
+        </div>
+      </a>
+    {% endfor %}  
+  </div>
+  <div class="col s4">
+    <div class="card">
+      {% comment %} Todo css style create_account div to show full form {% endcomment %}
+      <div class="card-content create_account">
+        <span class='card-title'>Create Account</span>
+        <form action="{% url 'account_create'%}" method="post">
+          {% csrf_token %}
+          {{ account_form.as_p }}
+          <input type="submit" class="btn" value="Submit">
+        </form>
+      </div>
+    </div>
+</div>
+{% endblock %}

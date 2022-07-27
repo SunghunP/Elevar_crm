@@ -11,17 +11,33 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://kit.fontawesome.com/866d41faab.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+  <script type="text/javascript">
+    $.get('{% url "line_chart_json" %}', function(data) {
+      var ctx = $("#myChart").get(0).getContext("2d");
+      new Chart(ctx, {
+        type: 'line', data: data
+      });
+      console.log(data)
+    });
+  </script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <header class="navbar-fixed">
     <nav class="teal">
       <div class="nav-wrapper">
         <ul>
-          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Elevar-CRM</a></li>
+          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;<img class="nav-logo" src="{% static 'images/logo-name.png' %}"></a></li>
         </ul>
         <ul class="right">
           {% comment %} important to include the leading / in th HTML {% endcomment %}
-          {% if user.is_authenticated %}         
+            <li><a href="{% url 'about' %}">About</a></li>      
+            {% if user.is_authenticated %}  
+            <li><a href="{% url 'product' %}">View Your Products</a></li>
+            <li><a href="{% url 'product_create' %}">Create Product</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
@@ -32,25 +48,26 @@
     </nav>
   </header>
   <main class="row">
-    <div class="menu col s3 valign-wrapper center-align">
-      {% if user.is_authenticated %}
+    {% if user.is_authenticated %}
+      <div class="col s2 valign-wrapper center-align">
         <ul class="menu left-align">
-          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-briefcase"></i><span >My Work</span></li></a></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-rocket"></i><span>Dashboard</span></li></a></div>
+          <div class="menu-card-title"><li class="menu-title"><h4 class='h4'>My Work</h4></li></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="{% url 'dashboard' %}"><li class="menu-item"><i class="fa-solid fa-rocket"></i><span>Dashboard</span></li></a></div>
           <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-clipboard"></i><span>Activities</span></li></a></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-users"></i><span>Customers</span></li></a></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-address-card"></i><span>Contacts</span></li></a></div>
-          
-          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-address-book"></i><span>Accounts</span></li></a></div>
-          <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-chart-line"></i><span>Sales</span></li></a></div>
+          <div class="menu-card-title"><li class="menu-title"><h4 class='h4'>Customers</h4></li></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="{% url 'contact_index' %}"><li class="menu-item"><i class="fa-solid fa-address-card"></i><span>Contacts</span></li></a></div>
+          <div class="menu-card hoverable"><a class="menu-link" href="{% url 'account_index' %}"><li class="menu-item"><i class="fa-solid fa-address-book"></i><span>Accounts</span></li></a></div>
+          <div class="menu-card-title"><li class="menu-title"><h4 class='h4'>Sales</h4></li></div>
           <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-star"></i><span>Leads</span></li></a></div>
           <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-lightbulb"></i><span>Opportunities</span></li></a></div>
         </ul>
+      </div>
+          <div class="content col s10 ">
+
       {% else %}
-        <nomenu>
+          <div class="content col s12 ">
+
       {% endif %}
-    </div>
-    <div class="content col s9">
       {% block content %}
       {% endblock %}
     </div>
@@ -60,5 +77,19 @@
       <div class="container right">All Rights Reserved,&copy; 2022 Elevar-CRM &nbsp;</div>
     </div>
 </footer>
+<script>
+  // create a datepicker
+  let dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+
+  // initialize the format select
+  let selectEl = document.getElementById('id_status');
+  M.FormSelect.init(selectEl);
+</script>
 </body>
 </html>

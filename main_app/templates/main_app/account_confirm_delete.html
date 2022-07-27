@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Delete Account</h1>
+
+  <h4>Are you sure you want to delete <br> <hr> <span class="teal-text">{{ object.company_name }}</span>?</h4>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn"><i class="material-icons right">delete</i>Delete</button>
+    <a href="{% url 'account_detail' object.id %}" class="btn">Cancel</a>
+  </form>
+{% endblock %}
