@@ -8,7 +8,72 @@
   </div>
 </div>
 
-<div class="row 4">
+<div class="row">
+  <div class="col s5">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Company Info</span>
+        <table>
+          <tbody>
+            <tr>
+              <td>Name</td> <td><span class="right">{{ account.company_name }}</span></td>
+            </tr>
+            <tr>
+              <td>Industry</td><td><span class="right">{{ account.industry }}</span></td>
+            </tr>
+            <tr>
+              <td>City</td><td><span class="right">{{ account.city }}</span></td>
+            </tr>
+            <tr>
+              <td>State/Province</td><td><span class="right">{{ account.state }}</span></td>
+            </tr>
+            <tr>
+              <td>ZIP/Postal</td><td><span class="right">{{ account.zip }}</span></td>
+            </tr>
+            <tr>
+              <td>Country/Region</td><td><span class="right">{{ account.country }}</span></td>
+            </tr>
+            <tr>
+              <td>Description</td><td><p>{{ account.description }}</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row s4">
+    <div class="col s5">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Transactions</span>
+        <!-- Transaction lands here -->
+        <form action="{% url 'add_transaction' account.id %}" method="post">
+          {% csrf_token %}
+          {{ transaction_form.as_p }}
+          <input type="submit" class="btn" value="Add Transaction">
+        </form>
+        <table class="striped">
+          <thead>
+            <tr><th>Date</th><th>Status</th><th>Transaction #</th></tr>
+          </thead>
+          <tbody>
+            {% for transaction in account.transaction_set.all %}
+            <tr>
+              <td>{{transaction.date}}</td>
+              <td>{{transaction.get_status_display}}</td>
+              <td>{{transaction.serial_number}}</td>
+              <td><a href="{% url 'transaction_update' transaction.id %}" class='btn'><i class="material-icons">edit</i></a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
   <div class="col s5">
     <div class="card">
       <div class="card-content">
@@ -39,70 +104,7 @@
     </div>
   </div>
 
-  <div class="col s5">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">Transactions</span>
-        <!-- Transaction lands here -->
-        <form action="{% url 'add_transaction' account.id %}" method="post">
-          {% csrf_token %}
-          {{ transaction_form.as_p }}
-          <input type="submit" class="btn" value="Add Transaction">
-        </form>
-        <table class="striped">
-          <thead>
-            <tr><th>Date</th><th>Status</th><th>Transaction #</th></tr>
-          </thead>
-          <tbody>
-            {% for transaction in account.transaction_set.all %}
-            <tr>
-              <td>{{transaction.date}}</td>
-              <td>{{transaction.status}}</td>
-              <td>{{transaction.serial_number}}</td>
-              <td><a href="{% url 'transaction_update' transaction.id %}" class='btn'><i class="material-icons">edit</i></a></td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row 4">
-  <div class="col s5">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">Company Info</span>
-        <table>
-          <tbody>
-            <tr>
-              <td>Name</td><td>{{ account.company_name }}</td>
-            </tr>
-            <tr>
-              <td>Industry</td><td>{{ account.industry }}</td>
-            </tr>
-            <tr>
-              <td>City</td><td>{{ account.city }}</td>
-            </tr>
-            <tr>
-              <td>State/Province</td><td>{{ account.state }}</td>
-            </tr>
-            <tr>
-              <td>ZIP/Postal</td><td>{{ account.zip }}</td>
-            </tr>
-            <tr>
-              <td>Country/Region</td><td>{{ account.country }}</td>
-            </tr>
-            <tr>
-              <td>Description</td><td><p>{{ account.description }}</p></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="col s5">
+       <div class="col s5">
     <div class="card">
       <div class="card-content">
         <span class="card-title">Current Products</span>
@@ -129,6 +131,12 @@
       </div>
     </div>
   </div>
+ 
+</div>
+
+<div class="row">
+  
+
 </div>
 <hr>
 <div class="row s8">
