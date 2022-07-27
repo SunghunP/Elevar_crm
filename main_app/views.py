@@ -283,6 +283,7 @@ def add_transaction(request, account_id):
     if form.is_valid():
         new_transaction = form.save(commit=False)
         new_transaction.account_id = account_id
+        new_transaction.serial_number = uuid.uuid4().hex[:10]
         new_transaction.save()
     return redirect('account_detail', account_id=account_id)
 
