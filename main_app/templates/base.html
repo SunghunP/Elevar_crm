@@ -36,8 +36,6 @@
           {% comment %} important to include the leading / in th HTML {% endcomment %}
             <li><a href="{% url 'about' %}">About</a></li>      
             {% if user.is_authenticated %}  
-            <li><a href="{% url 'product' %}">View Your Products</a></li>
-            <li><a href="{% url 'product_create' %}">Create Product</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
             <li><a href="{% url 'signup' %}">Sign Up</a></li>
@@ -59,6 +57,7 @@
             <div class="menu-card hoverable"><a class="menu-link" href="{% url 'account_index' %}"><li class="menu-item"><i class="fa-solid fa-address-book"></i><span>Accounts</span></li></a></div>
             <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-star"></i><span>Leads</span></li></a></div>
             <div class="menu-card hoverable"><a class="menu-link" href="/"><li class="menu-item"><i class="fa-solid fa-lightbulb"></i><span>Opportunities</span></li></a></div>
+            <div class="menu-card hoverable"><a class="menu-link" href="{% url 'product' %}"><li class="menu-item"><i class="fa-solid fa-clipboard-list"></i><span>Products</span></li></a></div>
           </ul>
         </div>
       </div>
