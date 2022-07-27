@@ -65,7 +65,7 @@ urlpatterns = [
     ## Transactions
     #################
     # Update / Change Status transaction
-    path('transaction/<int:pk>/update/', views.TransactionsUpdate.as_view(), name="transaction_update"),
+    path('transaction/<int:pk>/update/', views.TransactionUpdate.as_view(), name="transaction_update"),
     #################
     ## Relationships
     #################

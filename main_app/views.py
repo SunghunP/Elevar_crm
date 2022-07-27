@@ -14,6 +14,7 @@ from .forms import ContactForm, AccountForm, TransactionForm
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 from chartjs.views.columns import BaseColumnsHighChartsView
+import environ
 
 
 class LineChartJSONView(BaseLineChartView):
@@ -39,6 +40,8 @@ class ColumnHighChartJSONView(BaseColumnsHighChartsView):
     credits = {"enabled": False}
 
 
+env = environ.Env()
+environ.Env.read_env()
 line_chart = TemplateView.as_view(template_name='line_chart.html')
 line_chart_json = LineChartJSONView.as_view()
 
