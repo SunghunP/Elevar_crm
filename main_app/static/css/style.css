@@ -229,3 +229,8 @@ blockquote {
 #contact-account-card {
   height: 500px;
 }
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+}

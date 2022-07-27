@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Products</h1>
+<div class="product-header valign-wrapper">
+  <h1>Products</h1>
+  <a class=" btn waves-effect waves-light hoverable " href="{% url 'product_create' %}"><i class="fa-solid fa-circle-plus"></i><span>Create Product</span></a>
+</div>
 <div class="products row">
 
 {% for product in product_list %}
