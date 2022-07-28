@@ -31,7 +31,7 @@ class Account(models.Model):
 	description = models.TextField(max_length=250)
 
 	def __str__(self):
-		return f"company {self.company_name} located in {self.city}/{self.state}"
+		return f"{self.company_name}"
 
 	def get_absolute_url(self):
 		return reverse('account_detail', kwargs={'account_id': self.id}) 
@@ -82,3 +82,4 @@ class Transaction(models.Model):
 	
 	class Meta:
 		ordering = ['-date']
+
