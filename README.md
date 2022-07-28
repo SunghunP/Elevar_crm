@@ -63,9 +63,9 @@ Landing Page
 Signup Page
 ![SignUp](readme-images/signuplive.png)
 
-Contact List
-![ContactList](readme-images/contactlist.png)
-
-About
-![About](readme-images/aboutlive.png)
-
+### Future Enhancements
+- Add price and contacts to transaction tracking
+- Format an invoice out of the transaction
+- Use real data for the chart
+- Provide better visualization of our sales metrics 
+- Work in a local messenger 
